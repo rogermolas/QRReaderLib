@@ -1,0 +1,2 @@
+# QRReaderLib
+QR Code Reader
