@@ -12,14 +12,16 @@ typedef  void(^QRCompletionWithImage)(QRReaderReadableCodeObject *code, UIImage 
 typedef  void(^QRCompletionHandler)(QRReaderReadableCodeObject *code);
 typedef  void(^QRErrorHandler)(NSError *error);
 
-static QRCompletionWithImage QRCodeWithImage;
-static QRCompletionHandler QRCode;
-static QRErrorHandler QRError;
+static QRCompletionWithImage    QRCodeWithImage;
+static QRCompletionHandler      QRCode;
+static QRErrorHandler           QRError;
 
-static BOOL is_reading_data                 = NO;
-static char * const queue_label             = "QRReader.queue.read.data";
-static char * const error_domain            = "QRReaderErrorDomain";
-static int16_t const error_domain_code      = 102;
+static char *   const queue_label           = "QRReader.queue.read.data";
+static char *   const error_source_domain   = "QRReaderErrorDomain : Source Not Found";
+static char *   const error_reading_domain  = "QRReaderErrorDomain : Failed Reading Data";
+static int32_t  const error_domain_code     = 0x00000066;
+static int32_t  d_position                  = 0x00000002; // (Front) Default position
+static BOOL     is_reading_data             = NO;         // Initialize to false(NO)
 
 static dispatch_queue_t dispatchQueue() {
     dispatch_queue_t _dispatchQueue = nil;
@@ -30,11 +32,11 @@ static dispatch_queue_t dispatchQueue() {
 static QRReader * initialize_once() {
     static QRReader *reader = nil;
     static dispatch_once_t onceToken = 0;
-    dispatch_once(&onceToken, ^{reader = [[QRReader alloc] init];});
+    dispatch_once(&onceToken, ^{ reader = [[QRReader alloc] init]; });
     return reader;
 }
 
-static void reset_all_call_backs() {
+static void reset_all_callback() {
     QRCodeWithImage = nil;
     QRCode = nil;
     QRError = nil;
@@ -57,7 +59,6 @@ AVCaptureVideoDataOutputSampleBufferDelegate>
 }
 @end
 
-
 @implementation QRReader
 
 #pragma mark -
@@ -67,7 +68,7 @@ AVCaptureVideoDataOutputSampleBufferDelegate>
    completionHandler:(QRCompletionHandler)completionBlock
         errorHandler:(QRErrorHandler)errorBlock {
     
-    reset_all_call_backs();
+    reset_all_callback();
     
     QRReader *reader = initialize_once();
     reader->captureSession = nil;
@@ -84,7 +85,7 @@ AVCaptureVideoDataOutputSampleBufferDelegate>
    completionHandler:(QRCompletionWithImage)completionBlock
         errorHandler:(QRErrorHandler)errorBlock {
     
-    reset_all_call_backs();
+    reset_all_callback();
     
     QRReader *reader = initialize_once();
     reader->captureSession = nil;
@@ -94,6 +95,10 @@ AVCaptureVideoDataOutputSampleBufferDelegate>
     QRCodeWithImage = [completionBlock copy];
     QRError = [errorBlock copy];
     [reader QR_StartReadingData];
+}
+
++ (void)setDeviceCapturePosition:(QRCaptureDevicePosition)position {
+    d_position = position;
 }
 
 #pragma mark -
@@ -107,16 +112,15 @@ AVCaptureVideoDataOutputSampleBufferDelegate>
     AVCaptureDeviceInput *input;
     
     for (AVCaptureDevice *device in deviceArray) {
-        if (device.position == AVCaptureDevicePositionFront) {
-            NSLog(@"Front Cam: %@", device);
+        if (device.position == d_position) {
             input = [[AVCaptureDeviceInput alloc] initWithDevice:device error:&error];
         }
     }
     
     if (!input) {
-        error = [NSError errorWithDomain:[NSString stringWithUTF8String:error_domain]
+        error = [NSError errorWithDomain:[NSString stringWithUTF8String:error_source_domain]
                                     code:error_domain_code
-                                userInfo:@{@"class":NSStringFromClass(self.class)}];
+                                userInfo:@{@"info":@"Input not found"}];
         QRError(error);
     }
     
@@ -184,19 +188,25 @@ didOutputMetadataObjects:(NSArray *)metadataObjects
         if (metadataObject.type == self->metadataObjectType) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 QRReadableCode = metadataObject;
-                if (QRCode)
-                    QRCode(QRReadableCode);
                 
-                [weakSelf QR_CaptureImage];
+                if (QRCode) {
+                    QRCode(QRReadableCode);
+                }
+                
+                if (QRCodeWithImage) {
+                    [weakSelf QR_CaptureImage];
+                }
+                
+                is_reading_data = NO;
+                [weakSelf->captureSession stopRunning];
+                weakSelf->captureSession = nil;
             });
         };
-    }
     
-    dispatch_async(dispatch_get_main_queue(), ^{
-        is_reading_data = NO;
-        [weakSelf->captureSession stopRunning];
-        weakSelf->captureSession = nil;
-    });
+    } else {
+        QRError([NSError errorWithDomain:[NSString stringWithUTF8String:error_reading_domain]
+                                        code:error_domain_code
+                                    userInfo:@{@"info":@"Failed reading data"}]);
+    }
 }
-
 @end

@@ -13,6 +13,7 @@
 		E46475A61BAA7401000F925C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E46475A41BAA7401000F925C /* Main.storyboard */; };
 		E46475A81BAA7401000F925C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E46475A71BAA7401000F925C /* Assets.xcassets */; };
 		E46475AB1BAA7401000F925C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E46475A91BAA7401000F925C /* LaunchScreen.storyboard */; };
+		E46475B51BAA74F9000F925C /* QRReader.m in Sources */ = {isa = PBXBuildFile; fileRef = E46475B41BAA74F9000F925C /* QRReader.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,8 @@
 		E46475A71BAA7401000F925C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E46475AA1BAA7401000F925C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E46475AC1BAA7401000F925C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E46475B31BAA74F9000F925C /* QRReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRReader.h; sourceTree = "<group>"; };
+		E46475B41BAA74F9000F925C /* QRReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRReader.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +61,7 @@
 		E464759A1BAA7401000F925C /* Demo */ = {
 			isa = PBXGroup;
 			children = (
+				E46475B21BAA74F9000F925C /* QRReader */,
 				E464759E1BAA7401000F925C /* AppDelegate.h */,
 				E464759F1BAA7401000F925C /* AppDelegate.m */,
 				E46475A11BAA7401000F925C /* ViewController.h */,
@@ -77,6 +81,16 @@
 				E464759C1BAA7401000F925C /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E46475B21BAA74F9000F925C /* QRReader */ = {
+			isa = PBXGroup;
+			children = (
+				E46475B31BAA74F9000F925C /* QRReader.h */,
+				E46475B41BAA74F9000F925C /* QRReader.m */,
+			);
+			name = QRReader;
+			path = "../../../Project Lib/QRReader/QRReader";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -152,6 +166,7 @@
 				E46475A31BAA7401000F925C /* ViewController.m in Sources */,
 				E46475A01BAA7401000F925C /* AppDelegate.m in Sources */,
 				E464759D1BAA7401000F925C /* main.m in Sources */,
+				E46475B51BAA74F9000F925C /* QRReader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

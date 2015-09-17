@@ -10,7 +10,11 @@
 #import <AVFoundation/AVFoundation.h>
 #import <UIKit/UIKit.h>
 
-typedef AVMetadataMachineReadableCodeObject QRReaderReadableCodeObject;
+typedef AVMetadataMachineReadableCodeObject QRReaderReadableCodeObject NS_AVAILABLE(NA, 7_0);
+typedef NS_ENUM(NSInteger, QRCaptureDevicePosition) {
+    QRCaptureDevicePositionBack  = 1,
+    QRCaptureDevicePositionFront = 2
+} NS_AVAILABLE(10_7, 4_0);
 
 @interface QRReader : NSObject
 
@@ -22,5 +26,7 @@ typedef AVMetadataMachineReadableCodeObject QRReaderReadableCodeObject;
                 type:(NSString *)type
    completionHandler:(void(^)(QRReaderReadableCodeObject *code, UIImage *image))completionBlock
         errorHandler:(void(^)(NSError *error))errorBlock;
+
++ (void)setDeviceCapturePosition:(QRCaptureDevicePosition)position;
 
 @end

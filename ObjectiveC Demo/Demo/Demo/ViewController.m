@@ -7,12 +7,21 @@
 //
 
 #import "ViewController.h"
+#import "QRReader.h"
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    [QRReader dataFromView:self.view completionHandler:^(QRReaderReadableCodeObject *code) {
+        
+        NSLog(@"QR Code:< %@ >",code.stringValue);
+        
+    } errorHandler:^(NSError *error) {
+        
+        NSLog(@"Error: <%@ : %@>", error.domain, error.localizedDescription);
+    }];
 }
 
 @end
