@@ -6,6 +6,20 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		E4C58D7E1BAAAA2A009C8B4A /* libQRReader */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = E4C58D7F1BAAAA2A009C8B4A /* Build configuration list for PBXAggregateTarget "libQRReader" */;
+			buildPhases = (
+				E4C58D821BAAAA8E009C8B4A /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = libQRReader;
+			productName = libQRReader;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		E46475871BAA6B2D000F925C /* QRReader.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E46475861BAA6B2D000F925C /* QRReader.h */; };
 		E46475891BAA6B2D000F925C /* QRReader.m in Sources */ = {isa = PBXBuildFile; fileRef = E46475881BAA6B2D000F925C /* QRReader.m */; };
@@ -98,6 +112,9 @@
 					E46475821BAA6B2D000F925C = {
 						CreatedOnToolsVersion = 7.0;
 					};
+					E4C58D7E1BAAAA2A009C8B4A = {
+						CreatedOnToolsVersion = 7.0;
+					};
 				};
 			};
 			buildConfigurationList = E464757E1BAA6B2D000F925C /* Build configuration list for PBXProject "QRReader" */;
@@ -113,9 +130,26 @@
 			projectRoot = "";
 			targets = (
 				E46475821BAA6B2D000F925C /* QRReader */,
+				E4C58D7E1BAAAA2A009C8B4A /* libQRReader */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		E4C58D821BAAAA8E009C8B4A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# define output folder environment variable\nUNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal\n\n# Step 1. Build Device and Simulator versions\nxcodebuild -target ${PROJECT_NAME} ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk iphoneos  BUILD_DIR=\"${BUILD_DIR}\"\nBUILD_ROOT=\"${BUILD_ROOT}\" xcodebuild -target ${PROJECT_NAME} -configuration ${CONFIGURATION} -sdk iphonesimulator -arch i386 BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\"\n\n# make sure the output directory exists\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}\"\n\n# Step 2. Create universal binary file using lipo\nlipo -create -output \"${UNIVERSAL_OUTPUTFOLDER}/lib${PROJECT_NAME}.a\" \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/lib${PROJECT_NAME}.a\" \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/lib${PROJECT_NAME}.a\"\n\n# Last touch. copy the header files. Just for convenience\ncp -R \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/include\" \"${UNIVERSAL_OUTPUTFOLDER}\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E464757F1BAA6B2D000F925C /* Sources */ = {
@@ -225,6 +259,20 @@
 			};
 			name = Release;
 		};
+		E4C58D801BAAAA2A009C8B4A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		E4C58D811BAAAA2A009C8B4A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -242,6 +290,15 @@
 			buildConfigurations = (
 				E464758D1BAA6B2D000F925C /* Debug */,
 				E464758E1BAA6B2D000F925C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E4C58D7F1BAAAA2A009C8B4A /* Build configuration list for PBXAggregateTarget "libQRReader" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E4C58D801BAAAA2A009C8B4A /* Debug */,
+				E4C58D811BAAAA2A009C8B4A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
