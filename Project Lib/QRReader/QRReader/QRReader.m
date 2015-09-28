@@ -50,7 +50,7 @@ AVCaptureVideoDataOutputSampleBufferDelegate>
 @interface QRReader() <QRReaderExtended> {
     @private
         QRReaderReadableCodeObject *QRReadableCode;
-        NSString * metadataObjectType;
+    
         UIView *viewPreview;
     
         AVCaptureSession *captureSession;
@@ -73,24 +73,21 @@ AVCaptureVideoDataOutputSampleBufferDelegate>
     QRReader *reader = initialize_once();
     reader->captureSession = nil;
     reader->viewPreview = preview;
-    reader->metadataObjectType = AVMetadataObjectTypeQRCode;
     
     QRCode = [completionBlock copy];
     QRError = [errorBlock copy];
     [reader QR_StartReadingData];
 }
 
-+ (void)dataFromView:(UIView *)preview
-                type:(NSString *)type
-   completionHandler:(QRCompletionWithImage)completionBlock
-        errorHandler:(QRErrorHandler)errorBlock {
++ (void)dataWithImageFromView:(UIView *)preview
+            completionHandler:(void(^)(QRReaderReadableCodeObject *code, UIImage *image))completionBlock
+                 errorHandler:(void(^)(NSError *error))errorBlock {
     
     reset_all_callback();
     
     QRReader *reader = initialize_once();
     reader->captureSession = nil;
     reader->viewPreview = preview;
-    reader->metadataObjectType = type;
     
     QRCodeWithImage = [completionBlock copy];
     QRError = [errorBlock copy];
@@ -131,7 +128,7 @@ AVCaptureVideoDataOutputSampleBufferDelegate>
     [self->captureSession addOutput:captureMetadataOutput];
     
     [captureMetadataOutput setMetadataObjectsDelegate:self queue:dispatchQueue()];
-    [captureMetadataOutput setMetadataObjectTypes:[NSArray arrayWithObject:self->metadataObjectType]];
+    [captureMetadataOutput setMetadataObjectTypes:[NSArray arrayWithObject:AVMetadataObjectTypeQRCode]]; //Metadata type
     
     self->stillImageOutput = [[AVCaptureStillImageOutput alloc] init];
     NSDictionary *outputSettings = [[NSDictionary alloc] initWithObjectsAndKeys: AVVideoCodecJPEG, AVVideoCodecKey, nil];
@@ -185,7 +182,7 @@ didOutputMetadataObjects:(NSArray *)metadataObjects
     __block typeof (self) weakSelf = self;
     if (metadataObjects!= nil && [metadataObjects count] > 0) {
         AVMetadataMachineReadableCodeObject *metadataObject = [metadataObjects objectAtIndex:0];
-        if (metadataObject.type == self->metadataObjectType) {
+        if (metadataObject.type == AVMetadataObjectTypeQRCode) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 QRReadableCode = metadataObject;
                 

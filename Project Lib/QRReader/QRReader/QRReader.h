@@ -37,6 +37,8 @@ typedef NS_ENUM(NSInteger, QRCaptureDevicePosition) {
  
  @discussion
     QRReader is layered on the top of AVMetadataObject class it provides an interface for reading QR code metadata
+   
+    It use the "AVMetadataObjectTypeQRCode" metadata object type from AVMetadataObject
  
     The concrete AVCaptureMetadataOutput is used by QRReader for face detection.
  */
@@ -52,8 +54,7 @@ NS_CLASS_AVAILABLE(10_7, 4_0)
     
  @abstract
     Performing the reading operation based on the source provided(camera source view)
-    It use the "AVMetadataObjectTypeQRCode" metadata object tpe by default
-
+ 
  @param preview
     Specify the source view(UIView) object.
  @param completionBlock
@@ -65,22 +66,20 @@ NS_CLASS_AVAILABLE(10_7, 4_0)
 
 /*!
  @method
-    dataFromView: type: completionHandler: errorHandler:
+    dataWithImageFromView: type: completionHandler: errorHandler:
  
  @abstract
     Performing the reading operation based on the source provided(camera source view)
  
  @param preview
     Specify the source view(UIView) object.
- @param type
-    Specify the metadata type object (e.g AVMetadataObjectTypeQRCode or AVMetadataObjectTypeDataMatrixCode)
  @param completionBlock
     Completion callback it return 'QRReaderReadableCodeObject' metadata (e.g QR Code in NSData representation)
-    and UIImage object for source buffer
+    and UIImage object from source buffer
  @param errorBlock
     Error callback (e.g When source view is nil)
  */
-+ (void)dataFromView:(UIView *)preview type:(NSString *)type completionHandler:(void(^)(QRReaderReadableCodeObject *code, UIImage *image))completionBlock errorHandler:(void(^)(NSError *error))errorBlock;
++ (void)dataWithImageFromView:(UIView *)preview completionHandler:(void(^)(QRReaderReadableCodeObject *code, UIImage *image))completionBlock errorHandler:(void(^)(NSError *error))errorBlock;
 
 /// -------------------------------------------------------
 /// @name Settings
