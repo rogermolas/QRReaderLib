@@ -3,6 +3,14 @@ QRReader is a library for reading data from QR Code. It is layered on the top of
 
 QRReader used AVCaptureMetadataOutput for face detection.
 
+# Installation
+1. $ git clone https://github.com/KLabCyscorpions/QRReaderLib.git
+2. Drag the "build/QRReader" directory to your project source code.
+3. Build and run your project, if build succeeded you can proceed to implementation.
+4. If there's an error try to modify your library search path in project build settings.
+* Note QRReader Static Library is not supported in Swift
+   you can use the files in "/Project Lib/QRReader/QRReader, and add brigdging headed.
+
 # Objective C 
 ### Implementation ###
 ``` objc
@@ -37,8 +45,8 @@ QRReader.dataFromView(view, completionHandler: { (readableCodeObject) -> Void in
    print("Error: <\(error.domain) : \(error.localizedDescription)>")
 }
 ```
-### To retrieve image from screen buffer in swift ###
-```
+### To retrieve image from screen buffer ###
+```Swift
 QRReader.dataWithImageFromView(view, completionHandler: { (readableCodeObject, image) -> Void in
    // Metadata
    print("QR Code: < \(readableCodeObject.stringValue) >")
