@@ -8,9 +8,9 @@ QRReader used AVCaptureMetadataOutput for face detection.
 2. Drag the "build/QRReader" directory to your project source code.
 3. Build and run your project, if build succeeded you can proceed to implementation.
 4. If there's an error try to modify your library search path in project build settings.
-* Note QRReader Static Library is not supported in Swift
-   you can use the files in "/Project Lib/QRReader/QRReader, and add brigdging headed.
 
+* Note QRReader Static Library (.a file) is not supported in Swift you can use the files in "/Project Lib/QRReader/QRReader, and add bridging header for swift.
+    
 # Objective C 
 ### Implementation ###
 ``` objc
@@ -35,7 +35,6 @@ QRReader used AVCaptureMetadataOutput for face detection.
 }];
 ```
 # Swift
-* Note : Need to add bridging header for swift implementation.
 ```swift
 QRReader.dataFromView(view, completionHandler: { (readableCodeObject) -> Void in
    // Metadata
@@ -46,7 +45,7 @@ QRReader.dataFromView(view, completionHandler: { (readableCodeObject) -> Void in
 }
 ```
 ### To retrieve image from screen buffer ###
-```Swift
+```swift
 QRReader.dataWithImageFromView(view, completionHandler: { (readableCodeObject, image) -> Void in
    // Metadata
    print("QR Code: < \(readableCodeObject.stringValue) >")
