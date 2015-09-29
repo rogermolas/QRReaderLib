@@ -3,7 +3,7 @@
 //  QRReader
 //
 //  Created by Roger Molas on 9/17/15.
-//  Copyright © 2015 Roger Molas. All rights reserved.
+//  Copyright © 2015 KLab Cyscorpions. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

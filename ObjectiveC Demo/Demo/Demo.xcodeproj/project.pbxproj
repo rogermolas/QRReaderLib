@@ -45,6 +45,7 @@
 		E464758F1BAA7401000F925C = {
 			isa = PBXGroup;
 			children = (
+				E46475B21BAA74F9000F925C /* QRReader */,
 				E464759A1BAA7401000F925C /* Demo */,
 				E46475991BAA7401000F925C /* Products */,
 			);
@@ -61,7 +62,6 @@
 		E464759A1BAA7401000F925C /* Demo */ = {
 			isa = PBXGroup;
 			children = (
-				E46475B21BAA74F9000F925C /* QRReader */,
 				E464759E1BAA7401000F925C /* AppDelegate.h */,
 				E464759F1BAA7401000F925C /* AppDelegate.m */,
 				E46475A11BAA7401000F925C /* ViewController.h */,
@@ -90,7 +90,7 @@
 				E46475B41BAA74F9000F925C /* QRReader.m */,
 			);
 			name = QRReader;
-			path = "../../../Project Lib/QRReader/QRReader";
+			path = "../../Project Lib/QRReader/QRReader";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -313,6 +313,7 @@
 				E46475B11BAA7401000F925C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

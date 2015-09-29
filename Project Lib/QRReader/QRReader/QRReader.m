@@ -3,7 +3,7 @@
 //  QRReader
 //
 //  Created by Roger Molas on 9/17/15.
-//  Copyright © 2015 Roger Molas. All rights reserved.
+//  Copyright © 2015 KLab Cyscorpions. All rights reserved.
 //
 
 #import "QRReader.h"
@@ -11,11 +11,11 @@
 typedef  void(^QRCompletionWithImage)(QRReaderReadableCodeObject *code, UIImage *image);
 typedef  void(^QRCompletionHandler)(QRReaderReadableCodeObject *code);
 typedef  void(^QRErrorHandler)(NSError *error);
-
+// Callback
 static QRCompletionWithImage    QRCodeWithImage;
 static QRCompletionHandler      QRCode;
 static QRErrorHandler           QRError;
-
+// Defaults
 static char *   const queue_label           = "QRReader.queue.read.data";
 static char *   const error_source_domain   = "QRReaderErrorDomain : Source Not Found";
 static char *   const error_reading_domain  = "QRReaderErrorDomain : Failed Reading Data";
@@ -28,7 +28,7 @@ static dispatch_queue_t dispatchQueue() {
     _dispatchQueue = dispatch_queue_create(queue_label, NULL);
     return _dispatchQueue;
 }
-
+// Single instance
 static QRReader * initialize_once() {
     static QRReader *reader = nil;
     static dispatch_once_t onceToken = 0;
@@ -41,21 +41,19 @@ static void reset_all_callback() {
     QRCode = nil;
     QRError = nil;
 }
-
+// Protocol
 @protocol QRReaderExtended <
 AVCaptureMetadataOutputObjectsDelegate,
 AVCaptureVideoDataOutputSampleBufferDelegate>
 @end
 
 @interface QRReader() <QRReaderExtended> {
-    @private
-        QRReaderReadableCodeObject *QRReadableCode;
-    
-        UIView *viewPreview;
-    
-        AVCaptureSession *captureSession;
-        AVCaptureStillImageOutput *stillImageOutput;
-        AVCaptureVideoPreviewLayer *videoPreviewLayer;
+@private  // Private instance
+    UIView *viewPreview;
+    AVCaptureSession *captureSession;
+    AVCaptureStillImageOutput *stillImageOutput;
+    AVCaptureVideoPreviewLayer *videoPreviewLayer;
+    QRReaderReadableCodeObject *QRReadableCode;
 }
 @end
 
@@ -107,7 +105,7 @@ AVCaptureVideoDataOutputSampleBufferDelegate>
     NSError *error = nil;
     NSArray *deviceArray = [AVCaptureDevice devices];
     AVCaptureDeviceInput *input;
-    
+    // identify input source
     for (AVCaptureDevice *device in deviceArray) {
         if (device.position == d_position) {
             input = [[AVCaptureDeviceInput alloc] initWithDevice:device error:&error];
@@ -127,7 +125,7 @@ AVCaptureVideoDataOutputSampleBufferDelegate>
     AVCaptureMetadataOutput *captureMetadataOutput = [[AVCaptureMetadataOutput alloc] init];
     [self->captureSession addOutput:captureMetadataOutput];
     
-    [captureMetadataOutput setMetadataObjectsDelegate:self queue:dispatchQueue()];
+    [captureMetadataOutput setMetadataObjectsDelegate:self queue:dispatchQueue()]; //spawn in main thread
     [captureMetadataOutput setMetadataObjectTypes:[NSArray arrayWithObject:AVMetadataObjectTypeQRCode]]; //Metadata type
     
     self->stillImageOutput = [[AVCaptureStillImageOutput alloc] init];
@@ -165,7 +163,7 @@ AVCaptureVideoDataOutputSampleBufferDelegate>
             NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageSampleBuffer];
             UIImage *image = [[UIImage alloc] initWithData:imageData];
             if (QRCodeWithImage)
-                QRCodeWithImage(QRReadableCode,image);
+                QRCodeWithImage(QRReadableCode,image); // return metada & image
         }
     };
     [self->stillImageOutput captureStillImageAsynchronouslyFromConnection:videoConnection
@@ -187,11 +185,11 @@ didOutputMetadataObjects:(NSArray *)metadataObjects
                 QRReadableCode = metadataObject;
                 
                 if (QRCode) {
-                    QRCode(QRReadableCode);
+                    QRCode(QRReadableCode); // return metadata only
                 }
                 
                 if (QRCodeWithImage) {
-                    [weakSelf QR_CaptureImage];
+                    [weakSelf QR_CaptureImage]; // Cature sreen buffer
                 }
                 
                 is_reading_data = NO;

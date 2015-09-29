@@ -12,27 +12,8 @@
 		F09A69881BAFA5C10068A8B7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F09A69861BAFA5C10068A8B7 /* Main.storyboard */; };
 		F09A698A1BAFA5C10068A8B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F09A69891BAFA5C10068A8B7 /* Assets.xcassets */; };
 		F09A698D1BAFA5C10068A8B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F09A698B1BAFA5C10068A8B7 /* LaunchScreen.storyboard */; };
-		F09A69981BAFA5C10068A8B7 /* SwiftDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09A69971BAFA5C10068A8B7 /* SwiftDemoTests.swift */; };
-		F09A69A31BAFA5C20068A8B7 /* SwiftDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09A69A21BAFA5C20068A8B7 /* SwiftDemoUITests.swift */; };
 		F09A69B71BAFA6380068A8B7 /* QRReader.m in Sources */ = {isa = PBXBuildFile; fileRef = F09A69B61BAFA6380068A8B7 /* QRReader.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		F09A69941BAFA5C10068A8B7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F09A69771BAFA5C10068A8B7 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = F09A697E1BAFA5C10068A8B7;
-			remoteInfo = SwiftDemo;
-		};
-		F09A699F1BAFA5C20068A8B7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F09A69771BAFA5C10068A8B7 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = F09A697E1BAFA5C10068A8B7;
-			remoteInfo = SwiftDemo;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		F09A697F1BAFA5C10068A8B7 /* SwiftDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -42,12 +23,6 @@
 		F09A69891BAFA5C10068A8B7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F09A698C1BAFA5C10068A8B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F09A698E1BAFA5C10068A8B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F09A69931BAFA5C10068A8B7 /* SwiftDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F09A69971BAFA5C10068A8B7 /* SwiftDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDemoTests.swift; sourceTree = "<group>"; };
-		F09A69991BAFA5C20068A8B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F09A699E1BAFA5C20068A8B7 /* SwiftDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F09A69A21BAFA5C20068A8B7 /* SwiftDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDemoUITests.swift; sourceTree = "<group>"; };
-		F09A69A41BAFA5C20068A8B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F09A69B41BAFA6380068A8B7 /* SwiftDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwiftDemo-Bridging-Header.h"; sourceTree = "<group>"; };
 		F09A69B51BAFA6380068A8B7 /* QRReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QRReader.h; path = "../../../Project Lib/QRReader/QRReader/QRReader.h"; sourceTree = "<group>"; };
 		F09A69B61BAFA6380068A8B7 /* QRReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QRReader.m; path = "../../../Project Lib/QRReader/QRReader/QRReader.m"; sourceTree = "<group>"; };
@@ -61,29 +36,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F09A69901BAFA5C10068A8B7 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F09A699B1BAFA5C20068A8B7 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		F09A69761BAFA5C10068A8B7 = {
 			isa = PBXGroup;
 			children = (
+				F09A69B81BAFA7B20068A8B7 /* QRReader */,
 				F09A69811BAFA5C10068A8B7 /* SwiftDemo */,
-				F09A69961BAFA5C10068A8B7 /* SwiftDemoTests */,
-				F09A69A11BAFA5C20068A8B7 /* SwiftDemoUITests */,
 				F09A69801BAFA5C10068A8B7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -92,8 +52,6 @@
 			isa = PBXGroup;
 			children = (
 				F09A697F1BAFA5C10068A8B7 /* SwiftDemo.app */,
-				F09A69931BAFA5C10068A8B7 /* SwiftDemoTests.xctest */,
-				F09A699E1BAFA5C20068A8B7 /* SwiftDemoUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -101,43 +59,25 @@
 		F09A69811BAFA5C10068A8B7 /* SwiftDemo */ = {
 			isa = PBXGroup;
 			children = (
-				F09A69B81BAFA7B20068A8B7 /* QRReader */,
 				F09A69821BAFA5C10068A8B7 /* AppDelegate.swift */,
 				F09A69841BAFA5C10068A8B7 /* ViewController.swift */,
 				F09A69861BAFA5C10068A8B7 /* Main.storyboard */,
 				F09A69891BAFA5C10068A8B7 /* Assets.xcassets */,
 				F09A698B1BAFA5C10068A8B7 /* LaunchScreen.storyboard */,
 				F09A698E1BAFA5C10068A8B7 /* Info.plist */,
-				F09A69B41BAFA6380068A8B7 /* SwiftDemo-Bridging-Header.h */,
 			);
 			path = SwiftDemo;
-			sourceTree = "<group>";
-		};
-		F09A69961BAFA5C10068A8B7 /* SwiftDemoTests */ = {
-			isa = PBXGroup;
-			children = (
-				F09A69971BAFA5C10068A8B7 /* SwiftDemoTests.swift */,
-				F09A69991BAFA5C20068A8B7 /* Info.plist */,
-			);
-			path = SwiftDemoTests;
-			sourceTree = "<group>";
-		};
-		F09A69A11BAFA5C20068A8B7 /* SwiftDemoUITests */ = {
-			isa = PBXGroup;
-			children = (
-				F09A69A21BAFA5C20068A8B7 /* SwiftDemoUITests.swift */,
-				F09A69A41BAFA5C20068A8B7 /* Info.plist */,
-			);
-			path = SwiftDemoUITests;
 			sourceTree = "<group>";
 		};
 		F09A69B81BAFA7B20068A8B7 /* QRReader */ = {
 			isa = PBXGroup;
 			children = (
+				F09A69B41BAFA6380068A8B7 /* SwiftDemo-Bridging-Header.h */,
 				F09A69B51BAFA6380068A8B7 /* QRReader.h */,
 				F09A69B61BAFA6380068A8B7 /* QRReader.m */,
 			);
 			name = QRReader;
+			path = SwiftDemo;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -160,42 +100,6 @@
 			productReference = F09A697F1BAFA5C10068A8B7 /* SwiftDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
-		F09A69921BAFA5C10068A8B7 /* SwiftDemoTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = F09A69AA1BAFA5C20068A8B7 /* Build configuration list for PBXNativeTarget "SwiftDemoTests" */;
-			buildPhases = (
-				F09A698F1BAFA5C10068A8B7 /* Sources */,
-				F09A69901BAFA5C10068A8B7 /* Frameworks */,
-				F09A69911BAFA5C10068A8B7 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				F09A69951BAFA5C10068A8B7 /* PBXTargetDependency */,
-			);
-			name = SwiftDemoTests;
-			productName = SwiftDemoTests;
-			productReference = F09A69931BAFA5C10068A8B7 /* SwiftDemoTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		F09A699D1BAFA5C20068A8B7 /* SwiftDemoUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = F09A69AD1BAFA5C20068A8B7 /* Build configuration list for PBXNativeTarget "SwiftDemoUITests" */;
-			buildPhases = (
-				F09A699A1BAFA5C20068A8B7 /* Sources */,
-				F09A699B1BAFA5C20068A8B7 /* Frameworks */,
-				F09A699C1BAFA5C20068A8B7 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				F09A69A01BAFA5C20068A8B7 /* PBXTargetDependency */,
-			);
-			name = SwiftDemoUITests;
-			productName = SwiftDemoUITests;
-			productReference = F09A699E1BAFA5C20068A8B7 /* SwiftDemoUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -208,14 +112,6 @@
 				TargetAttributes = {
 					F09A697E1BAFA5C10068A8B7 = {
 						CreatedOnToolsVersion = 7.0;
-					};
-					F09A69921BAFA5C10068A8B7 = {
-						CreatedOnToolsVersion = 7.0;
-						TestTargetID = F09A697E1BAFA5C10068A8B7;
-					};
-					F09A699D1BAFA5C20068A8B7 = {
-						CreatedOnToolsVersion = 7.0;
-						TestTargetID = F09A697E1BAFA5C10068A8B7;
 					};
 				};
 			};
@@ -233,8 +129,6 @@
 			projectRoot = "";
 			targets = (
 				F09A697E1BAFA5C10068A8B7 /* SwiftDemo */,
-				F09A69921BAFA5C10068A8B7 /* SwiftDemoTests */,
-				F09A699D1BAFA5C20068A8B7 /* SwiftDemoUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -247,20 +141,6 @@
 				F09A698D1BAFA5C10068A8B7 /* LaunchScreen.storyboard in Resources */,
 				F09A698A1BAFA5C10068A8B7 /* Assets.xcassets in Resources */,
 				F09A69881BAFA5C10068A8B7 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F09A69911BAFA5C10068A8B7 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F09A699C1BAFA5C20068A8B7 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,36 +157,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F09A698F1BAFA5C10068A8B7 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F09A69981BAFA5C10068A8B7 /* SwiftDemoTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F09A699A1BAFA5C20068A8B7 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F09A69A31BAFA5C20068A8B7 /* SwiftDemoUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		F09A69951BAFA5C10068A8B7 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = F09A697E1BAFA5C10068A8B7 /* SwiftDemo */;
-			targetProxy = F09A69941BAFA5C10068A8B7 /* PBXContainerItemProxy */;
-		};
-		F09A69A01BAFA5C20068A8B7 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = F09A697E1BAFA5C10068A8B7 /* SwiftDemo */;
-			targetProxy = F09A699F1BAFA5C20068A8B7 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		F09A69861BAFA5C10068A8B7 /* Main.storyboard */ = {
@@ -438,54 +289,6 @@
 			};
 			name = Release;
 		};
-		F09A69AB1BAFA5C20068A8B7 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = SwiftDemoTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.klabcyscorpions.SwiftDemoTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftDemo.app/SwiftDemo";
-			};
-			name = Debug;
-		};
-		F09A69AC1BAFA5C20068A8B7 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = SwiftDemoTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.klabcyscorpions.SwiftDemoTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftDemo.app/SwiftDemo";
-			};
-			name = Release;
-		};
-		F09A69AE1BAFA5C20068A8B7 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = SwiftDemoUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.klabcyscorpions.SwiftDemoUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = SwiftDemo;
-				USES_XCTRUNNER = YES;
-			};
-			name = Debug;
-		};
-		F09A69AF1BAFA5C20068A8B7 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = SwiftDemoUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.klabcyscorpions.SwiftDemoUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = SwiftDemo;
-				USES_XCTRUNNER = YES;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -505,22 +308,7 @@
 				F09A69A91BAFA5C20068A8B7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-		};
-		F09A69AA1BAFA5C20068A8B7 /* Build configuration list for PBXNativeTarget "SwiftDemoTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				F09A69AB1BAFA5C20068A8B7 /* Debug */,
-				F09A69AC1BAFA5C20068A8B7 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-		};
-		F09A69AD1BAFA5C20068A8B7 /* Build configuration list for PBXNativeTarget "SwiftDemoUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				F09A69AE1BAFA5C20068A8B7 /* Debug */,
-				F09A69AF1BAFA5C20068A8B7 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
