@@ -99,6 +99,15 @@ AVCaptureVideoDataOutputSampleBufferDelegate>
 #pragma mark -
 #pragma mark Private Methods
 
+- (void)dealloc {
+    
+    reset_all_callback();
+    viewPreview = nil;
+    captureSession = nil;
+    stillImageOutput = nil;
+    videoPreviewLayer = nil;
+}
+
 - (void)QR_StartReadingData {
     
     is_reading_data = YES;
